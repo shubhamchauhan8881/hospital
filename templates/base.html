@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        {% include 'header.html' %}
+    </header>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="text/javascript" src="{% static 'main.js' %}"></script>
+<script>
+    tailwind.config = {
+      theme: {
+
+        fontFamily:{
+            'headings':['Rubik'],
+            'titles':['Inter',],
+            'text':['Arial'],
+        },
+       
+      }
+    }
+  </script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Rubik:wght@300;400&display=swap');
+    form label, form input, form span, form textarea{
+        display: block;
+        width: 100%;
+        outline: none;
+    }
+</style>
+</html>

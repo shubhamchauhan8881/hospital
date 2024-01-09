@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<div class="min-h-screen container mx-auto">
+
+
+    <div class="my-10 flex flex-col justify-center items-center">
+        <h1 class="font-headings text-2xl">Patient Registration</h1>
+        <p>Experience the convenience and efficiency of our hospital website.</p>
+    </div>
+
+    <div class="bg-slate-100 p-5 relative rounded mt-20">
+        <form id="submissionForm" class="grid grid-cols-2 gap-5 mt-24" method="post">
+            {% csrf_token %}
+            <div class="text-center absolute top-[-60px] left-[45%]">
+                <div class="profile h-32 w-32 rounded-full border-2 border-slate-100 bg-white overflow-hidden">
+                    <img src="{% static 'media/user.png' %}" id="userphotobtn" id="pimg"/>
+                </div>
+                <input type="file" accept="image/*" name="profileimage" hidden id="file">
+                <span class="text-xs text-center" id="filename">Profile Image</span>
+            </div>
+
+            <label for="">
+                <span class="font-titles">First Name</span>
+                <input type="text" class="rounded p-2" name="fname" value="{{data.fname}}" placeholder="e.g. John" required/>
+            </label>
+
+            <label for="">
+                <span class="font-titles">Last Name</span>
+                <input type="text" class="rounded p-2" name="lname" value="{{data.lname}}" placeholder="e.g. Doe" required/>
+            </label>
+            
+            <label for="">
+                <span class="font-titles">Username</span>
+                <input type="text" class="rounded p-2" name="username" value="{{data.username}}" placeholder="e.g. someone123!" required/>
+            </label>
+
+            <label for="">
+                <span class="font-titles">Email</span>
+                <input type="email" class="rounded p-2" name="email" value="{{data.email}}" placeholder="e.g. someone@email.com" required/>
+            </label>
+
+            <label for="">
+                <span class="font-titles">Phone</span>
+                <input type="text" class="rounded p-2" name="phone" value="{{data.phone}}" placeholder="e.g. 7845052100" required/>
+            </label>
+
+            <label for="">
+                <span class="font-titles">Password</span>
+                <input type="password" id="password" minlength="6" class="rounded p-2" name="pass" placeholder="e.g. password" required />
+            </label>
+
+            <label for="">
+                <span class="font-titles">Retype Password</span>
+                <input type="password" class="rounded p-2" id="repassword" name="repass" placeholder="e.g. password" required/>
+            </label>
+
+            <label for="">
+                <span class="font-titles">Address Line 1</span>
+                <input type="" class="rounded p-2" name="address" value="{{data.address}}" placeholder="e.g. City Area Landmark">
+            </label>
+
+            <label for="">
+                <span class="font-titles">City</span>
+                <input type="" class="rounded p-2" name="city" value="{{data.city}}" placeholder="e.g. Lucknow">
+            </label>
+
+            <label for="">
+                <span class="font-titles">State</span>
+                <input type="" class="rounded p-2" name="state" value="{{data.state}}" placeholder="e.g. Uttat Pradesh">
+            </label>
+
+            <label for="">
+                <span class="font-titles">Pincode</span>
+                <input type="" class="rounded p-2" name="pincode" value="{{data.pincode}}" placeholder="e.g. 28005">
+            </label>
+
+            <label for="">
+                <div class="flex flex-col text-xs">
+                    <span class="font-titles text-rose-500">NOTE: </span>
+                    {% if error_message %}
+                        <span class="font-titles">{{ error_message }}</span>
+                    {% else %}
+                        <span class="font-titles">All Fields are required.</span>
+                        <span class="font-titles">Password must contains at least 8 character.</span>
+                        <span class="font-titles">Include special characteers [!#@$%^*()+] in password.</span>
+                        <span class="font-titles">Email will be used for login.</span>
+                    {% endif %}
+                </div>
+            </label>
+
+            <label for="">
+                <button type="buttom" id="submissionFormButton" class="px-5 py-1 border-[1.5px] rounded bg-rose-600 text-white">Submit &rarr;</button>
+            </label>
+        </form>
+
+        <p class="py-5">OR</p>
+        <a href="../doctor/register">
+            <div class="featureCard flex p-5 bg-slate-50 rounded">
+                <div class="me-5">
+                    <svg width="48px" height="48px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.3873 7.1575L11.9999 12L3.60913 7.14978" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 12V21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 2.57735C11.6188 2.22008 12.3812 2.22008 13 2.57735L19.6603 6.42265C20.2791 6.77992 20.6603 7.44017 20.6603 8.1547V15.8453C20.6603 16.5598 20.2791 17.2201 19.6603 17.5774L13 21.4226C12.3812 21.7799 11.6188 21.7799 11 21.4226L4.33975 17.5774C3.72094 17.2201 3.33975 16.5598 3.33975 15.8453V8.1547C3.33975 7.44017 3.72094 6.77992 4.33975 6.42265L11 2.57735Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </div>
+                <div class="grow">
+                    <h4 class="font-headings text-xl mb-3 font-bold">Doctor Registration</h4>
+                    <p>Register yourself as doctor. After Registration your account will be on hold untill its verified by higher authorities.</p>
+                </div>
+            </div>
+        </a>
+        
+    </div>
+
+
+</div>
+{% endblock %}

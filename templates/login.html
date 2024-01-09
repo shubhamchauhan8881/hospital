@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<div class="min-h-screen container mx-auto">
+
+
+    <div class="my-10 flex flex-col justify-center items-center">
+        <h1 class="font-headings text-2xl">Login</h1>
+        <p>Experience the convenience and efficiency of our hospital website.</p>
+    </div>
+
+    <div class="bg-slate-100 p-5 relative rounded mt-20 max-w-md mx-auto">
+        <form class="grid gap-5 mt-16 " method="post">
+            {% csrf_token %}
+            <div class="text-center absolute top-[-60px] left-[35%]">
+                <div class="profile h-32 w-32 rounded-full border-2 border-slate-100 bg-white overflow-hidden">
+                    <img src="{% static 'media/user.png' %}"/>
+                </div>
+            </div>
+
+            <label for="">
+                <span class="font-titles">Username</span>
+                <input type="text" class="rounded p-2" value="{{username}}" name="username" placeholder="e.g. someone@email.com" required/>
+            </label>
+
+            <label for="">
+                <span class="font-titles">Password</span>
+                <input type="password" class="rounded p-2" name="password" placeholder="e.g. password " required/>
+                <p class="text-right text-xs" >Forgot your password?</p>
+            </label>
+
+            {% if error_message %}
+            <label for="">
+                <span class="font-titles text-rose-500 text-xs">{{error_message}}</span>  
+            </label>
+            {% endif %}
+
+            <label for="">
+                <button type="submit" class="px-5 py-1 border-[1.5px] rounded bg-emerald-600 text-white">Login &rarr;</button>
+            </label>
+        </form>
+
+        <p class="pt-5 pb-2 text-sm">Haven't registered yet??</p>
+        <div class="flex gap-x-2">
+            <a href="../user/register">
+                <div class="featureCard flex p-2 bg-slate-50 rounded">
+                    <div class="me-2">
+                        <svg width="24px" height="24px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.3873 7.1575L11.9999 12L3.60913 7.14978" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 12V21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 2.57735C11.6188 2.22008 12.3812 2.22008 13 2.57735L19.6603 6.42265C20.2791 6.77992 20.6603 7.44017 20.6603 8.1547V15.8453C20.6603 16.5598 20.2791 17.2201 19.6603 17.5774L13 21.4226C12.3812 21.7799 11.6188 21.7799 11 21.4226L4.33975 17.5774C3.72094 17.2201 3.33975 16.5598 3.33975 15.8453V8.1547C3.33975 7.44017 3.72094 6.77992 4.33975 6.42265L11 2.57735Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </div>
+                    <div class="grow">
+                        <h4 class="font-headings text-md">Patient Registration</h4>
+                        <p class="text-xs">Register yourself as Patient.</p>
+                    </div>
+                </div>
+            </a>
+            <br>
+            <a href="../doctor/register">
+                <div class="featureCard flex p-2 bg-slate-50 rounded">
+                    <div class="me-2">
+                        <svg width="24px" height="24px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.3873 7.1575L11.9999 12L3.60913 7.14978" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 12V21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 2.57735C11.6188 2.22008 12.3812 2.22008 13 2.57735L19.6603 6.42265C20.2791 6.77992 20.6603 7.44017 20.6603 8.1547V15.8453C20.6603 16.5598 20.2791 17.2201 19.6603 17.5774L13 21.4226C12.3812 21.7799 11.6188 21.7799 11 21.4226L4.33975 17.5774C3.72094 17.2201 3.33975 16.5598 3.33975 15.8453V8.1547C3.33975 7.44017 3.72094 6.77992 4.33975 6.42265L11 2.57735Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </div>
+                    <div class="grow">
+                        <h4 class="font-headings text-md">Doctor Registration</h4>
+                        <p class="text-xs">Register yourself as Doctor.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+
+
+</div>
+{% endblock %}
